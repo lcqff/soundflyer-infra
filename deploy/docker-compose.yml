@@ -1,6 +1,7 @@
 version: '3.5'
 services:
   soundflyer-db:
+    container_name: soundflyer-db
     image: soundflyer-db:${ENV}
     # Mysql 변수들
     environment:
@@ -15,6 +16,7 @@ services:
       - 3306:3306
 
   soundflyer-back:
+    container_name: soundflyer-back
     image: soundflyer-back:${ENV}
     ports:
       - 8080:8080
