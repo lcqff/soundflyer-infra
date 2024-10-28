@@ -10,6 +10,7 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     command:
+      - mysqld
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
     ports:
@@ -19,8 +20,9 @@ services:
     container_name: soundflyer-back
     image: soundflyer-back:${ENV}
     ports:
-      - 8080:8080
+      - 80:8080
     environment:
+      - SPRING_PROFILES_ACTIVE=${ENV}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
