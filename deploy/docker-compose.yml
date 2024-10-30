@@ -20,7 +20,7 @@ services:
     container_name: soundflyer-back
     image: soundflyer-back:${ENV}
     ports:
-      - 80:8080
+      - 8080:8080
     environment:
       - SPRING_PROFILES_ACTIVE=${ENV}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
@@ -28,3 +28,14 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     depends_on:
       - soundflyer-db
+
+  nginx:
+    container_name: nginx
+    image: nginx:${ENV}
+    volumes:
+      - ./docker/data/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/data/nginx/default.d:/etc/nginx/conf.d/default.conf
+    ports:
+      - 80:80
+      - 443:443
+    command: sh -c "nginx && tail -f /dev/null"
