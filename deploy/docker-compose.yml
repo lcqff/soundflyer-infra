@@ -29,6 +29,12 @@ services:
     depends_on:
       - soundflyer-db
 
+  soundflyer-front:
+    container_name: soundflyer-front
+    image: soundflyer-front:${ENV}
+    ports:
+      - 3000:3000
+
   nginx:
     container_name: nginx
     image: nginx:${ENV}
