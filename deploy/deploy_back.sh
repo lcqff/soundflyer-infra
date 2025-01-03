@@ -4,9 +4,9 @@ if [ $# -ne 2 ]; then
     exit -1
 fi
 
-# tar 파일 다운로드
+# jar 파일 다운로드
 BUILD_PATH="docker/data/server"
-aws s3 cp s3://soundflyer/soundflyer-deploy/$1.tar.gz $BUILD_PATH/$1.tar.gz
+aws s3 cp s3://soundflyer/soundflyer-deploy/$1.jar $BUILD_PATH/MusicPlatform-0.0.1-SNAPSHOT.jar 
 
 # 기존 Jar 삭제
 if [ -d $BUILD_PATH/*.jar ]
@@ -15,8 +15,8 @@ then
 fi
 
 # 압축 해제
-tar -zxf $BUILD_PATH/$1.tar.gz -C $BUILD_PATH
-rm $BUILD_PATH/$1.tar.gz
+#tar -zxf $BUILD_PATH/MusicPlatform-0.0.1-SNAPSHOT.tar.gz -C $BUILD_PATH
+#rm $BUILD_PATH/MusicPlatform-0.0.1-SNAPSHOT.tar.gz
 
 #기존 컨테이너 삭제
 docker rm -f soundflyer-back:$2
