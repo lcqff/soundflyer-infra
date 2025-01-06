@@ -14,15 +14,11 @@ then
     rm -r *.jar
 fi
 
-# 압축 해제
-#tar -zxf $BUILD_PATH/MusicPlatform-0.0.1-SNAPSHOT.tar.gz -C $BUILD_PATH
-#rm $BUILD_PATH/MusicPlatform-0.0.1-SNAPSHOT.tar.gz
-
 #기존 컨테이너 삭제
 docker rm -f soundflyer-back:$2
 
 # dockerfile 빌드
-docker build --no-cache -t soundflyer-back:$2 -f docker/back.Dockerfile .
+docker build --no-cache -t soundflyer-back:$2 -f docker/back.Dockerfile ~
 
 # docker-compose 실행
 docker-compose up -d soundflyer-back
