@@ -23,5 +23,5 @@ docker build --no-cache -t soundflyer-back:$2 -f docker/back.Dockerfile ~
 # docker-compose 실행
 docker-compose up -d soundflyer-back
 
-### Cleanup
-#docker rmi $(docker images --filter "dangling=true" -q)
+# Cleanup
+docker rmi $(docker images --filter "dangling=true" -q)
