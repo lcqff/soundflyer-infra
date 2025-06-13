@@ -48,3 +48,12 @@ services:
       - 80:80
       - 443:443
     command: sh -c "nginx && tail -f /dev/null"
+
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:latest
+    ports:
+      - 9090:9090
+    volumes:
+      - ./docker/data/APM/prometheus.yml:/etc/prometheus/prometheus.yml
+
